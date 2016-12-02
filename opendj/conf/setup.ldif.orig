@@ -1,0 +1,49 @@
+# geoLocation auxiliary class
+dn: cn=schema
+changetype: modify
+add: attributeTypes
+attributeTypes: ( geolongitude-oid NAME 'geoLongitude' DESC 'longitude in decimal degrees' EQUALITY caseIgnoreMatch ORDERING caseIgnoreOrderingMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributeTypes: ( geolatitude-oid NAME 'geoLatitude' DESC 'latitude in decimal degrees' EQUALITY caseIgnoreMatch ORDERING caseIgnoreOrderingMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+
+dn: cn=schema
+changetype: modify
+add: objectClasses
+objectClasses: ( geolocation-oid NAME 'geolocation' SUP top AUXILIARY MAY ( geoLatitude $ geoLongitude ) MAY postalAddress )
+
+# Admin Account
+dn: cn=%ADMINUSER%,dc=xchangecore,dc=us
+objectclass: top
+objectclass: person
+objectclass: inetOrgPerson
+sn: %ADMINUSER%
+cn: %ADMINUSER%
+userPassword: %ADMINPASS%
+
+# CORE Account
+dn: cn=%COREUSER%,dc=xchangecore,dc=us
+objectclass: top
+objectclass: person
+objectclass: inetOrgPerson
+sn: %COREUSER%
+cn: %COREUSER%
+userPassword: %COREPASS%
+
+# Admins Group
+dn: cn=xchangecore-admins,dc=xchangecore,dc=us
+cn: xchangecore-admins
+description: CORE Admins
+objectclass: top
+objectClass: groupOfUniqueNames
+uniqueMember: cn=%ADMINUSER%,dc=xchangecore,dc=us
+
+# Users Group
+dn: cn=xchangecore-users,dc=xchangecore,dc=us
+cn: xchangecore-users
+description: CORE Users
+objectclass: top
+objectClass: groupOfUniqueNames
+objectClass: geoLocation
+geoLatitude: %LATITUDE%
+geoLongitude: %LONGITUDE%
+uniqueMember: cn=%ADMINUSER%,dc=xchangecore,dc=us
+uniqueMember: cn=%COREUSER%,dc=xchangecore,dc=us

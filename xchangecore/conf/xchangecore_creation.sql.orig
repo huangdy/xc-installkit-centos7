@@ -1,0 +1,10 @@
+/*
+ * create database core
+ */
+
+# the database: core creation script
+create database core character set='utf8';
+
+create user 'sa'@'localhost' identified by '%SYSADMINPASS%';
+grant all privileges on core.* to sa@localhost with grant option;
+flush privileges;
