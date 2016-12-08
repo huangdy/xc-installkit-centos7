@@ -19,7 +19,7 @@ echo Install the xchangecore and opendj-connector 2>&1 | tee -a install.log
 cd xchangecore && ./install.sh $sa_passwd $au_passwd $cu_passwd $lat $lon && cd -
 
 echo Install the OpenDJ 2>&1 | tee -a install.log
-echo cd opendj && ./install.sh $sa_passwd $au_passwd $cu_passwd $lat $lon && cd -
+cd opendj && ./install.sh $sa_passwd $au_passwd $cu_passwd $lat $lon && cd -
 
 echo Install the Tomcat 2>&1 | tee -a install.log
 cd tomcat && ./install.sh $sa_passwd $au_passwd $cu_passwd && cd -
