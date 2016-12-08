@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo sudo systemctl stop tomcat7.service
+sudo systemctl stop tomcat7.service
+
+echo sudo systemctl stop openfire.service
+sudo systemctl stop openfire.service
+
+echo sudo /opt/opendj/bin/stop-ds
+sudo /opt/opendj/bin/stop-ds
+
+echo sudo /opt/opendj/bin/start-ds
+sudo /opt/opendj/bin/start-ds
+
+echo sudo systemctl start openfire.service
+sudo systemctl start openfire.service
+
+echo sudo systemctl start tomcat7.service
+sudo systemctl start tomcat7.service
