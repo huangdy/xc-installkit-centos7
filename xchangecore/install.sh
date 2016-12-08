@@ -18,25 +18,25 @@ fi
 
 basedir=`pwd`
 
-echo mkdir xchangecore && cd xchangecore && jar xvf $basedir/xchangecore-2.0.0.war 2>&1 | tee -a $basedir/install.log
+echo mkdir xchangecore && cd xchangecore && jar xvf $basedir/xchangecore-2.0.0.war
 mkdir xchangecore
 cd $basedir/xchangecore && jar xvf $basedir/xchangecore-2.0.0.war 2>&1 | tee -a $basedir/install.log
 
 cd $basedir
 rpl "%LOCATION%" "$lat_lon" xchangecore/core.properties 2>&1 | tee -a $basedir/install.log
 
-echo cp conf/xchangecore_creation.sql.orig conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
+echo cp conf/xchangecore_creation.sql.orig conf/xchangecore_creation.sql
 cp conf/xchangecore_creation.sql.orig conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
 
 rpl "%SYSADMINPASS%" "$sa_passwd" conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
 
-echo "mysql -u root -p < conf/xchangecore_creation.sql" 2>&1 | tee -a $basedir/install.log
+echo "mysql -u root -p < conf/xchangecore_creation.sql"
 mysql -u root -p < conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
 
-echo rm conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
+echo rm conf/xchangecore_creation.sql
 rm conf/xchangecore_creation.sql 2>&1 | tee -a $basedir/install.log
 
-echo tar xvf opendj-connector.war 2>&1 | tee -a $basedir/install.log
+echo tar xvf opendj-connector.war
 tar xvf opendj-connector.war 2>&1 | tee -a $basedir/install.log
 
 rpl "%SYSADMINPASS%" "$sa_passwd" opendj-connector/opendj-rest2ldap-servlet.json 2>&1 | tee -a $basedir/install.log

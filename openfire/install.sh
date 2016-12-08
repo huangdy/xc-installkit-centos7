@@ -55,7 +55,7 @@ echo "mysql -u root -p < conf/openfire_mysql.sql" 2>&1 | tee -a ../install.log
 mysql -u root -p < conf/openfire_mysql.sql 2>&1 | tee -a ../install.log
 
 echo rm conf/openfire_mysql.sql 2>&1 | tee -a ../install.log
-echo rm conf/openfire_mysql.sql 2>&1 | tee -a ../install.log
+rm conf/openfire_mysql.sql 2>&1 | tee -a ../install.log
 
 echo configure the conf/openfire.xml 2>&1 | tee -a ../install.log
 echo cp conf/openfire.xml.orig conf/openfire.xml 2>&1 | tee -a ../install.log
