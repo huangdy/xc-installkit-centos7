@@ -8,6 +8,9 @@ echo 	- sudo apt-get install unzip 2>&1 | tee -a install.log
 echo 	- sudo apt-get install curl 2>&1 | tee -a install.log
 echo 	- sudo apt-get install mysql-server 2>&1 | tee -a install.log
 
+ehco install the rpl
+sudo rpm -ivh util/rpl-1.5.5-3.el6.noarch.rpm
+
 read -p "Enter the System Administrator's Password: " sa_passwd
 read -p "Enter the Administrator User's Password: " au_passwd
 read -p "Enter the Core User's Password: " cu_passwd
